@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_cas-server" default="compile.module.cas-server">
+  <dirname property="module.cas-server.basedir" file="${ant.file.module_cas-server}"/>
+  
+  <property name="module.jdk.home.cas-server" value="${jdk.home.1.7}"/>
+  <property name="module.jdk.bin.cas-server" value="${jdk.bin.1.7}"/>
+  <property name="module.jdk.classpath.cas-server" value="jdk.classpath.1.7"/>
+  
+  <property name="compiler.args.cas-server" value="-encoding GBK -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="cas-server.output.dir" value="${module.cas-server.basedir}/target/classes"/>
+  <property name="cas-server.testoutput.dir" value="${module.cas-server.basedir}/target/test-classes"/>
+  
+  <path id="cas-server.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="cas-server.module.production.classpath">
+    <path refid="${module.jdk.classpath.cas-server}"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  <path id="cas-server.runtime.production.module.classpath">
+    <pathelement location="${cas-server.output.dir}"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  <path id="cas-server.module.classpath">
+    <path refid="${module.jdk.classpath.cas-server}"/>
+    <pathelement location="${cas-server.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.9.5.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.9.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  <path id="cas-server.runtime.module.classpath">
+    <pathelement location="${cas-server.testoutput.dir}"/>
+    <pathelement location="${cas-server.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.9.5.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.9.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.cas-server">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.cas-server">
+    <patternset refid="excluded.from.module.cas-server"/>
+  </patternset>
+  
+  
+  <target name="compile.module.cas-server" depends="compile.module.cas-server.production,compile.module.cas-server.tests" description="Compile module cas-server"/>
+  
+  <target name="compile.module.cas-server.production" depends="register.custom.compilers" description="Compile module cas-server; production classes"/>
+  
+  <target name="compile.module.cas-server.tests" depends="register.custom.compilers,compile.module.cas-server.production" description="compile module cas-server; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.cas-server" description="cleanup module">
+    <delete dir="${cas-server.output.dir}"/>
+    <delete dir="${cas-server.testoutput.dir}"/>
+  </target>
+</project>

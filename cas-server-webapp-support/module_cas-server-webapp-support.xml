@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_cas-server-webapp-support" default="compile.module.cas-server-webapp-support">
+  <dirname property="module.cas-server-webapp-support.basedir" file="${ant.file.module_cas-server-webapp-support}"/>
+  
+  <property name="module.jdk.home.cas-server-webapp-support" value="${jdk.home.1.7}"/>
+  <property name="module.jdk.bin.cas-server-webapp-support" value="${jdk.bin.1.7}"/>
+  <property name="module.jdk.classpath.cas-server-webapp-support" value="jdk.classpath.1.7"/>
+  
+  <property name="compiler.args.cas-server-webapp-support" value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="cas-server-webapp-support.output.dir" value="${module.cas-server-webapp-support.basedir}/target/classes"/>
+  <property name="cas-server-webapp-support.testoutput.dir" value="${module.cas-server-webapp-support.basedir}/target/test-classes"/>
+  
+  <path id="cas-server-webapp-support.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="cas-server-webapp-support.module.production.classpath">
+    <path refid="${module.jdk.classpath.cas-server-webapp-support}"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-audit:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-common:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-core:3.2.0.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-web:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.9.release.classpath"/>
+    <pathelement location="${cas-server-core.output.dir}"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-impl:1.5.1.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-api:1.5.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.1.0.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.perf4j:perf4j:log4jonly:0.9.16.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-webflow:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-binding:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js-resources:2.3.2.release.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.opensymphony.quartz:quartz:1.6.1.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.cr2.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  <path id="cas-server-webapp-support.runtime.production.module.classpath">
+    <pathelement location="${cas-server-webapp-support.output.dir}"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-support-spring:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-audit:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-error:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-common:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-core:3.2.0.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-web:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-config:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.9.release.classpath"/>
+    <path refid="cas-server-core.runtime.production.module.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-impl:1.5.1.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-api:1.5.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.1.0.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.perf4j:perf4j:log4jonly:0.9.16.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-webflow:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-binding:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js-resources:2.3.2.release.classpath"/>
+    <path refid="library.maven:_commons-jexl:commons-jexl:1.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <path refid="cas-server-support-generic.runtime.production.module.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.opensymphony.quartz:quartz:1.6.1.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:4.2.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.cr2.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  <path id="cas-server-webapp-support.module.classpath">
+    <path refid="${module.jdk.classpath.cas-server-webapp-support}"/>
+    <pathelement location="${cas-server-webapp-support.output.dir}"/>
+    <path refid="library.maven:_org.mockito:mockito-all:1.9.5.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-support-spring:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-audit:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-error:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-common:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-core:3.2.0.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-web:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-config:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.9.release.classpath"/>
+    <pathelement location="${cas-server-core.testoutput.dir}"/>
+    <pathelement location="${cas-server-core.output.dir}"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-impl:1.5.1.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-api:1.5.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.1.0.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.perf4j:perf4j:log4jonly:0.9.16.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-webflow:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-binding:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js-resources:2.3.2.release.classpath"/>
+    <path refid="library.maven:_commons-jexl:commons-jexl:1.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <pathelement location="${cas-server-support-generic.testoutput.dir}"/>
+    <pathelement location="${cas-server-support-generic.output.dir}"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.opensymphony.quartz:quartz:1.6.1.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:4.2.0.final.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.cr2.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.hsqldb:hsqldb:2.0.0.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.9.5.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:3.2.9.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  <path id="cas-server-webapp-support.runtime.module.classpath">
+    <pathelement location="${cas-server-webapp-support.testoutput.dir}"/>
+    <pathelement location="${cas-server-webapp-support.output.dir}"/>
+    <path refid="library.maven:_org.mockito:mockito-all:1.9.5.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-support-spring:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-audit:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-error:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-common:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-core:3.2.0.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-web:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-config:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.9.release.classpath"/>
+    <path refid="cas-server-core.runtime.module.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-impl:1.5.1.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-api:1.5.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.1.0.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.perf4j:perf4j:log4jonly:0.9.16.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-webflow:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-binding:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js-resources:2.3.2.release.classpath"/>
+    <path refid="library.maven:_commons-jexl:commons-jexl:1.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <path refid="cas-server-support-generic.runtime.module.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.opensymphony.quartz:quartz:1.6.1.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:4.2.0.final.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-entitymanager:4.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.cr2.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.hsqldb:hsqldb:2.0.0.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.9.5.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:3.2.9.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.cas-server-webapp-support">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.cas-server-webapp-support">
+    <patternset refid="excluded.from.module.cas-server-webapp-support"/>
+  </patternset>
+  
+  <path id="cas-server-webapp-support.module.sourcepath">
+    <dirset dir="${module.cas-server-webapp-support.basedir}">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="cas-server-webapp-support.module.test.sourcepath">
+    <dirset dir="${module.cas-server-webapp-support.basedir}">
+      <include name="src/test/java"/>
+      <include name="src/test/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.cas-server-webapp-support" depends="compile.module.cas-server-webapp-support.production,compile.module.cas-server-webapp-support.tests" description="Compile module cas-server-webapp-support"/>
+  
+  <target name="compile.module.cas-server-webapp-support.production" depends="register.custom.compilers,compile.module.cas-server-core,compile.module.cas-server-support-generic" description="Compile module cas-server-webapp-support; production classes">
+    <mkdir dir="${cas-server-webapp-support.output.dir}"/>
+    <javac2 destdir="${cas-server-webapp-support.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cas-server-webapp-support}/javac">
+      <compilerarg line="${compiler.args.cas-server-webapp-support}"/>
+      <bootclasspath refid="cas-server-webapp-support.module.bootclasspath"/>
+      <classpath refid="cas-server-webapp-support.module.production.classpath"/>
+      <src refid="cas-server-webapp-support.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cas-server-webapp-support"/>
+    </javac2>
+    
+    <copy todir="${cas-server-webapp-support.output.dir}">
+      <fileset dir="${module.cas-server-webapp-support.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.cas-server-webapp-support.tests" depends="register.custom.compilers,compile.module.cas-server-webapp-support.production" description="compile module cas-server-webapp-support; test classes" unless="skip.tests">
+    <mkdir dir="${cas-server-webapp-support.testoutput.dir}"/>
+    <javac2 destdir="${cas-server-webapp-support.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cas-server-webapp-support}/javac">
+      <compilerarg line="${compiler.args.cas-server-webapp-support}"/>
+      <bootclasspath refid="cas-server-webapp-support.module.bootclasspath"/>
+      <classpath refid="cas-server-webapp-support.module.classpath"/>
+      <src refid="cas-server-webapp-support.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cas-server-webapp-support"/>
+    </javac2>
+    
+    <copy todir="${cas-server-webapp-support.testoutput.dir}">
+      <fileset dir="${module.cas-server-webapp-support.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.cas-server-webapp-support.basedir}/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.cas-server-webapp-support" description="cleanup module">
+    <delete dir="${cas-server-webapp-support.output.dir}"/>
+    <delete dir="${cas-server-webapp-support.testoutput.dir}"/>
+  </target>
+</project>

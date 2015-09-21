@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_cas-server-uber-webapp" default="compile.module.cas-server-uber-webapp">
+  <dirname property="module.cas-server-uber-webapp.basedir" file="${ant.file.module_cas-server-uber-webapp}"/>
+  
+  <property name="module.jdk.home.cas-server-uber-webapp" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.cas-server-uber-webapp" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.cas-server-uber-webapp" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.cas-server-uber-webapp" value="-encoding GBK -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="cas-server-uber-webapp.output.dir" value="${module.cas-server-uber-webapp.basedir}/target/classes"/>
+  <property name="cas-server-uber-webapp.testoutput.dir" value="${module.cas-server-uber-webapp.basedir}/target/test-classes"/>
+  
+  <path id="cas-server-uber-webapp.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="cas-server-uber-webapp.module.production.classpath">
+    <path refid="library.maven:_commons-codec:commons-codec:1.7.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  <path id="cas-server-uber-webapp.runtime.production.module.classpath">
+    <pathelement location="${cas-server-uber-webapp.output.dir}"/>
+    <path refid="cas-server-webapp.runtime.production.module.classpath"/>
+    <path refid="cas-server-support-jdbc.runtime.production.module.classpath"/>
+    <path refid="cas-server-core.runtime.production.module.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-audit:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-common:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-impl:1.5.1.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-api:1.5.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-core:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.1.0.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.cr2.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.perf4j:perf4j:log4jonly:0.9.16.classpath"/>
+    <path refid="library.maven:_commons-jexl:commons-jexl:1.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.9.release.classpath"/>
+    <path refid="cas-server-support-radius.runtime.production.module.classpath"/>
+    <path refid="library.maven:_net.jradius:jradius-core:1.0.0.classpath"/>
+    <path refid="library.maven:_commons-configuration:commons-configuration:1.5.classpath"/>
+    <path refid="library.maven:_commons-digester:commons-digester:1.8.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils:1.7.0.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils-core:1.7.0.classpath"/>
+    <path refid="library.maven:_commons-chain:commons-chain:1.2.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache:2.7.2.classpath"/>
+    <path refid="library.maven:_org.gnu:java-getopt:1.0.13.classpath"/>
+    <path refid="library.maven:_org.gnu:gnu-crypto:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jradius:jradius-dictionary:1.0.0.classpath"/>
+    <path refid="cas-server-support-ldap.runtime.production.module.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-webflow:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-binding:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js-resources:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.ldaptive:ldaptive:1.0.6.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.9.release.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <path refid="cas-server-support-x509.runtime.production.module.classpath"/>
+    <path refid="library.maven:_edu.vt.middleware:vt-crypt:2.1.4.classpath"/>
+    <path refid="library.maven:_org.bouncycastle:bcprov-jdk15:1.45.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache-core:2.3.1.classpath"/>
+    <path refid="cas-server-support-spnego.runtime.production.module.classpath"/>
+    <path refid="library.maven:_org.samba.jcifs:jcifs:1.2.25.classpath"/>
+    <path refid="library.maven:_org.samba.jcifs:jcifs-ext:0.9.4.classpath"/>
+    <path refid="cas-server-integration-jboss.runtime.production.module.classpath"/>
+    <path refid="library.maven:_org.jboss.cache:jbosscache-core:2.2.2.ga.classpath"/>
+    <path refid="library.maven:_jgroups:jgroups:2.6.5.ga.classpath"/>
+    <path refid="library.maven:_javax.transaction:jta:1.1.classpath"/>
+    <path refid="library.maven:_org.jboss:jboss-common-core:2.2.8.ga.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging-spi:2.0.5.ga.classpath"/>
+    <path refid="cas-server-integration-memcached.runtime.production.module.classpath"/>
+    <path refid="library.maven:_net.spy:spymemcached:2.11.7.classpath"/>
+    <path refid="library.maven:_de.javakaffee:kryo-serializers:0.33.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.6.1.classpath"/>
+    <path refid="library.maven:_com.esotericsoftware:kryo:3.0.2.classpath"/>
+    <path refid="library.maven:_com.esotericsoftware:reflectasm:1.10.1.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm:5.0.3.classpath"/>
+    <path refid="library.maven:_com.esotericsoftware:minlog:1.3.0.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  <path id="cas-server-uber-webapp.module.classpath">
+    <pathelement location="${cas-server-uber-webapp.output.dir}"/>
+    <pathelement location="${cas-server-webapp.testoutput.dir}"/>
+    <pathelement location="${cas-server-webapp.output.dir}"/>
+    <pathelement location="${cas-server-support-jdbc.testoutput.dir}"/>
+    <pathelement location="${cas-server-support-jdbc.output.dir}"/>
+    <pathelement location="${cas-server-core.testoutput.dir}"/>
+    <pathelement location="${cas-server-core.output.dir}"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-audit:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-common:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-impl:1.5.1.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-api:1.5.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-core:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.1.0.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.cr2.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.perf4j:perf4j:log4jonly:0.9.16.classpath"/>
+    <path refid="library.maven:_commons-jexl:commons-jexl:1.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.9.release.classpath"/>
+    <pathelement location="${cas-server-support-radius.testoutput.dir}"/>
+    <pathelement location="${cas-server-support-radius.output.dir}"/>
+    <path refid="library.maven:_net.jradius:jradius-core:1.0.0.classpath"/>
+    <path refid="library.maven:_commons-configuration:commons-configuration:1.5.classpath"/>
+    <path refid="library.maven:_commons-digester:commons-digester:1.8.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils:1.7.0.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils-core:1.7.0.classpath"/>
+    <path refid="library.maven:_commons-chain:commons-chain:1.2.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache:2.7.2.classpath"/>
+    <path refid="library.maven:_org.gnu:java-getopt:1.0.13.classpath"/>
+    <path refid="library.maven:_org.gnu:gnu-crypto:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jradius:jradius-dictionary:1.0.0.classpath"/>
+    <pathelement location="${cas-server-support-ldap.testoutput.dir}"/>
+    <pathelement location="${cas-server-support-ldap.output.dir}"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-webflow:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-binding:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js-resources:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.ldaptive:ldaptive:1.0.6.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.9.release.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <pathelement location="${cas-server-support-x509.testoutput.dir}"/>
+    <pathelement location="${cas-server-support-x509.output.dir}"/>
+    <path refid="library.maven:_edu.vt.middleware:vt-crypt:2.1.4.classpath"/>
+    <path refid="library.maven:_org.bouncycastle:bcprov-jdk15:1.45.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache-core:2.3.1.classpath"/>
+    <pathelement location="${cas-server-support-spnego.testoutput.dir}"/>
+    <pathelement location="${cas-server-support-spnego.output.dir}"/>
+    <path refid="library.maven:_org.samba.jcifs:jcifs:1.2.25.classpath"/>
+    <path refid="library.maven:_org.samba.jcifs:jcifs-ext:0.9.4.classpath"/>
+    <pathelement location="${cas-server-integration-jboss.testoutput.dir}"/>
+    <pathelement location="${cas-server-integration-jboss.output.dir}"/>
+    <path refid="library.maven:_org.jboss.cache:jbosscache-core:2.2.2.ga.classpath"/>
+    <path refid="library.maven:_jgroups:jgroups:2.6.5.ga.classpath"/>
+    <path refid="library.maven:_javax.transaction:jta:1.1.classpath"/>
+    <path refid="library.maven:_org.jboss:jboss-common-core:2.2.8.ga.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging-spi:2.0.5.ga.classpath"/>
+    <pathelement location="${cas-server-integration-memcached.testoutput.dir}"/>
+    <pathelement location="${cas-server-integration-memcached.output.dir}"/>
+    <path refid="library.maven:_net.spy:spymemcached:2.11.7.classpath"/>
+    <path refid="library.maven:_de.javakaffee:kryo-serializers:0.33.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.6.1.classpath"/>
+    <path refid="library.maven:_com.esotericsoftware:kryo:3.0.2.classpath"/>
+    <path refid="library.maven:_com.esotericsoftware:reflectasm:1.10.1.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm:5.0.3.classpath"/>
+    <path refid="library.maven:_com.esotericsoftware:minlog:1.3.0.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.9.5.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.9.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  <path id="cas-server-uber-webapp.runtime.module.classpath">
+    <pathelement location="${cas-server-uber-webapp.testoutput.dir}"/>
+    <pathelement location="${cas-server-uber-webapp.output.dir}"/>
+    <path refid="cas-server-webapp.runtime.module.classpath"/>
+    <path refid="cas-server-support-jdbc.runtime.module.classpath"/>
+    <path refid="cas-server-core.runtime.module.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-audit:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_com.github.inspektr:inspektr-common:1.0.7.ga.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-impl:1.5.1.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.5.classpath"/>
+    <path refid="library.maven:_org.jasig.service.persondir:person-directory-api:1.5.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.security:spring-security-core:3.2.0.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-core:4.1.0.final.classpath"/>
+    <path refid="library.maven:_antlr:antlr:2.7.7.classpath"/>
+    <path refid="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.final.classpath"/>
+    <path refid="library.maven:_dom4j:dom4j:1.6.1.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.0.b2.classpath"/>
+    <path refid="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.1.0.cr2.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.15.0-ga.classpath"/>
+    <path refid="library.maven:_org.hibernate.common:hibernate-commons-annotations:4.0.1.final.classpath"/>
+    <path refid="library.maven:_org.perf4j:perf4j:log4jonly:0.9.16.classpath"/>
+    <path refid="library.maven:_commons-jexl:commons-jexl:1.1.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.9.release.classpath"/>
+    <path refid="cas-server-support-radius.runtime.module.classpath"/>
+    <path refid="library.maven:_net.jradius:jradius-core:1.0.0.classpath"/>
+    <path refid="library.maven:_commons-configuration:commons-configuration:1.5.classpath"/>
+    <path refid="library.maven:_commons-digester:commons-digester:1.8.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils:1.7.0.classpath"/>
+    <path refid="library.maven:_commons-beanutils:commons-beanutils-core:1.7.0.classpath"/>
+    <path refid="library.maven:_commons-chain:commons-chain:1.2.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache:2.7.2.classpath"/>
+    <path refid="library.maven:_org.gnu:java-getopt:1.0.13.classpath"/>
+    <path refid="library.maven:_org.gnu:gnu-crypto:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jradius:jradius-dictionary:1.0.0.classpath"/>
+    <path refid="cas-server-support-ldap.runtime.module.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-webflow:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-binding:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.springframework.webflow:spring-js-resources:2.3.2.release.classpath"/>
+    <path refid="library.maven:_org.ldaptive:ldaptive:1.0.6.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.9.release.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <path refid="cas-server-support-x509.runtime.module.classpath"/>
+    <path refid="library.maven:_edu.vt.middleware:vt-crypt:2.1.4.classpath"/>
+    <path refid="library.maven:_org.bouncycastle:bcprov-jdk15:1.45.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_net.sf.ehcache:ehcache-core:2.3.1.classpath"/>
+    <path refid="cas-server-support-spnego.runtime.module.classpath"/>
+    <path refid="library.maven:_org.samba.jcifs:jcifs:1.2.25.classpath"/>
+    <path refid="library.maven:_org.samba.jcifs:jcifs-ext:0.9.4.classpath"/>
+    <path refid="cas-server-integration-jboss.runtime.module.classpath"/>
+    <path refid="library.maven:_org.jboss.cache:jbosscache-core:2.2.2.ga.classpath"/>
+    <path refid="library.maven:_jgroups:jgroups:2.6.5.ga.classpath"/>
+    <path refid="library.maven:_javax.transaction:jta:1.1.classpath"/>
+    <path refid="library.maven:_org.jboss:jboss-common-core:2.2.8.ga.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging-spi:2.0.5.ga.classpath"/>
+    <path refid="cas-server-integration-memcached.runtime.module.classpath"/>
+    <path refid="library.maven:_net.spy:spymemcached:2.11.7.classpath"/>
+    <path refid="library.maven:_de.javakaffee:kryo-serializers:0.33.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.6.1.classpath"/>
+    <path refid="library.maven:_com.esotericsoftware:kryo:3.0.2.classpath"/>
+    <path refid="library.maven:_com.esotericsoftware:reflectasm:1.10.1.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm:5.0.3.classpath"/>
+    <path refid="library.maven:_com.esotericsoftware:minlog:1.3.0.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.9.5.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:3.2.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.9.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjrt:1.7.2.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.7.2.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.5.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.cas-server-uber-webapp">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.cas-server-uber-webapp">
+    <patternset refid="excluded.from.module.cas-server-uber-webapp"/>
+  </patternset>
+  
+  
+  <target name="compile.module.cas-server-uber-webapp" depends="compile.module.cas-server-uber-webapp.production,compile.module.cas-server-uber-webapp.tests" description="Compile module cas-server-uber-webapp"/>
+  
+  <target name="compile.module.cas-server-uber-webapp.production" depends="register.custom.compilers,compile.module.cas-server-webapp,compile.module.cas-server-support-jdbc,compile.module.cas-server-core,compile.module.cas-server-support-radius,compile.module.cas-server-support-ldap,compile.module.cas-server-support-x509,compile.module.cas-server-support-spnego,compile.module.cas-server-integration-jboss,compile.module.cas-server-integration-memcached" description="Compile module cas-server-uber-webapp; production classes"/>
+  
+  <target name="compile.module.cas-server-uber-webapp.tests" depends="register.custom.compilers,compile.module.cas-server-uber-webapp.production" description="compile module cas-server-uber-webapp; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.cas-server-uber-webapp" description="cleanup module">
+    <delete dir="${cas-server-uber-webapp.output.dir}"/>
+    <delete dir="${cas-server-uber-webapp.testoutput.dir}"/>
+  </target>
+</project>
