@@ -4,16 +4,7 @@ import org.apache.log4j.Logger;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.jasig.cas.adaptors.jdbc.AbstractJdbcUsernamePasswordAuthenticationHandler;
 import org.jasig.cas.authentication.*;
-import org.jasig.cas.authentication.handler.BadPasswordAuthenticationException;
-import org.jasig.cas.authentication.handler.BadUsernameOrPasswordAuthenticationException;
-import org.jasig.cas.authentication.principal.Principal;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.Assert;
-import sun.jdbc.odbc.ee.DataSource;
-
-import javax.security.auth.login.AccountException;
-import javax.security.auth.login.AccountNotFoundException;
-import javax.validation.constraints.NotNull;
 import java.security.GeneralSecurityException;
 import java.util.List;
 import java.util.Map;
