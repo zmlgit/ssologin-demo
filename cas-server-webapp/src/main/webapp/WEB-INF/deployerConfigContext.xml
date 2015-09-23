@@ -60,8 +60,9 @@
                    | If more than one instance of the same handler class is configured, you must explicitly
                    | set its name to something other than its default name (typically the simple class name).
                    -->
-                <entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" />
-                <entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" />
+                <!--<entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver"/>-->
+                <!--<entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver"/>-->
+                <entry key-ref="authenticationHandler"  value-ref="principalResolver"/>
             </map>
         </constructor-arg>
 
@@ -83,14 +84,15 @@
            | * RequiredHandlerAuthenticationPolicy - specifies a handler that must authenticate its credential to pass
            -->
         <property name="authenticationPolicy">
-            <bean class="org.jasig.cas.authentication.AnyAuthenticationPolicy" />
+            <bean class="org.jasig.cas.authentication.AnyAuthenticationPolicy"/>
         </property>
+
     </bean>
 
     <!-- Required for proxy ticket mechanism. -->
     <bean id="proxyAuthenticationHandler"
           class="org.jasig.cas.authentication.handler.support.HttpBasedServiceCredentialsAuthenticationHandler"
-          p:httpClient-ref="httpClient" />
+          p:httpClient-ref="httpClient"/>
 
     <!--
        | TODO: Replace this component with one suitable for your enviroment.
@@ -115,15 +117,15 @@
 
     <!-- Required for proxy ticket mechanism -->
     <bean id="proxyPrincipalResolver"
-          class="org.jasig.cas.authentication.principal.BasicPrincipalResolver" />
+          class="org.jasig.cas.authentication.principal.BasicPrincipalResolver"/>
 
     <!--
        | Resolves a principal from a credential using an attribute repository that is configured to resolve
        | against a deployer-specific store (e.g. LDAP).
        -->
     <bean id="primaryPrincipalResolver"
-          class="org.jasig.cas.authentication.principal.PersonDirectoryPrincipalResolver" >
-        <property name="attributeRepository" ref="attributeRepository" />
+          class="org.jasig.cas.authentication.principal.PersonDirectoryPrincipalResolver">
+        <property name="attributeRepository" ref="attributeRepository"/>
     </bean>
 
     <!--
@@ -131,12 +133,12 @@
     may go against a database or LDAP server.  The id should remain "attributeRepository" though.
     +-->
     <bean id="attributeRepository" class="org.jasig.services.persondir.support.StubPersonAttributeDao"
-            p:backingMap-ref="attrRepoBackingMap" />
-    
+          p:backingMap-ref="attrRepoBackingMap"/>
+
     <util:map id="attrRepoBackingMap">
-        <entry key="uid" value="uid" />
-        <entry key="eduPersonAffiliation" value="eduPersonAffiliation" /> 
-        <entry key="groupMembership" value="groupMembership" />
+        <entry key="uid" value="uid"/>
+        <entry key="eduPersonAffiliation" value="eduPersonAffiliation"/>
+        <entry key="groupMembership" value="groupMembership"/>
     </util:map>
 
     <!-- 
@@ -145,12 +147,12 @@
     The name of this bean should remain "serviceRegistryDao".
     +-->
     <bean id="serviceRegistryDao" class="org.jasig.cas.services.InMemoryServiceRegistryDaoImpl"
-            p:registeredServices-ref="registeredServicesList" />
+          p:registeredServices-ref="registeredServicesList"/>
 
     <util:list id="registeredServicesList">
         <bean class="org.jasig.cas.services.RegexRegisteredService"
               p:id="0" p:name="HTTP and IMAP" p:description="Allows HTTP(S) and IMAP(S) protocols"
-              p:serviceId="^(https?|imaps?)://.*" p:evaluationOrder="10000001" />
+              p:serviceId="^(https?|imaps?)://.*" p:evaluationOrder="10000001"/>
         <!--
         Use the following definition instead of the above to further restrict access
         to services within your domain (including sub domains).
@@ -171,23 +173,48 @@
         </bean>
         -->
     </util:list>
-    
-    <bean id="auditTrailManager" class="com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager" />
-    
-    <bean id="healthCheckMonitor" class="org.jasig.cas.monitor.HealthCheckMonitor" p:monitors-ref="monitorsList" />
-  
+
+    <bean id="auditTrailManager" class="com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager"/>
+
+    <bean id="healthCheckMonitor" class="org.jasig.cas.monitor.HealthCheckMonitor" p:monitors-ref="monitorsList"/>
+
     <util:list id="monitorsList">
-      <bean class="org.jasig.cas.monitor.MemoryMonitor" p:freeMemoryWarnThreshold="10" />
-      <!--
-        NOTE
-        The following ticket registries support SessionMonitor:
-          * DefaultTicketRegistry
-          * JpaTicketRegistry
-        Remove this monitor if you use an unsupported registry.
-      -->
-      <bean class="org.jasig.cas.monitor.SessionMonitor"
-          p:ticketRegistry-ref="ticketRegistry"
-          p:serviceTicketCountWarnThreshold="5000"
-          p:sessionCountWarnThreshold="100000" />
+        <bean class="org.jasig.cas.monitor.MemoryMonitor" p:freeMemoryWarnThreshold="10"/>
+        <!--
+          NOTE
+          The following ticket registries support SessionMonitor:
+            * DefaultTicketRegistry
+            * JpaTicketRegistry
+          Remove this monitor if you use an unsupported registry.
+        -->
+        <bean class="org.jasig.cas.monitor.SessionMonitor"
+              p:ticketRegistry-ref="ticketRegistry"
+              p:serviceTicketCountWarnThreshold="5000"
+              p:sessionCountWarnThreshold="100000"/>
     </util:list>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          p:driverClass="com.mysql.jdbc.Driver"
+          p:jdbcUrl="jdbc:mysql://localhost:3306/zmlio?useUnicode=true&amp;characterEncoding=UTF-8"
+          p:user="root"
+          p:password="mysql"/>
+    <!--<bean id="searchModeSearchDatabaseAuthenticationHandler"-->
+    <!--class="org.jasig.cas.adaptors.jdbc.SearchModeSearchDatabaseAuthenticationHandler">-->
+    <!--<property name="tableUsers" value="t_user"/>-->
+    <!--<property name="fieldPassword" value="password"/>-->
+    <!--<property name="fieldUser" value="username"/>-->
+    <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--<property name="passwordEncoder" ref="passwordEncoder"/>-->
+    <!--</bean>-->
+    <!--<bean id="passwordEncoder" class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder">-->
+    <!--<constructor-arg value="MD5"/>-->
+    <!--</bean>-->
+
+    <bean class="cn.zmlio.cas.support.SSOAuthenticationHandler" id="authenticationHandler">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean class="cn.zmlio.cas.support.SSOPrincipalResolver" id="principalResolver">
+        <constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+    </bean>
 </beans>
